@@ -17,13 +17,17 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                 sh 'terraform plan'
+                sh 'terraform plan -var-file=environment.tfvars -out=tfplan'
             }
         }
         stage('Terraform Apply') {
+            when {
+                branch 'main'   // only apply in main branch
+            }
             steps {
-               sh 'terraform apply'
+                sh 'terraform apply -auto-approve tfplan'
             }
         }
     }
 }
+
