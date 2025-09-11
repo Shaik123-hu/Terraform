@@ -1,7 +1,7 @@
 variable "filename" {
-default = [
-"pets.txt",
-"cats.txt",
-"dogs.txt"
-]
+  default = [
+    "pets.txt",
+    "cats.txt",
+    "dogs.txt"
+  ]
 }
